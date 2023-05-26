@@ -25,19 +25,23 @@ def generate_output(prompt):
 
 # Main function
 def main():
-    # The prompt is gathered from the user's notes
-    page_of_notes = read_pdf("test.pdf")
+    # Reading the PDF file to obtain the pages of text from the notes
+    pages = read_pdf("test.pdf")
 
     # Creating an example output from the prompt
     ideal_prompt = (
         """
         Generate sample questions and answers based on the provided text for studying purposes.
 
-        **Example**
+        **
+        Q: What is the mitochondria?
+        A: The mitochondria is the powerhouse of the cell.
+        **
+
         Text:
         ---
         """
-        + page_of_notes
+        + pages
         + """
 
         ---
@@ -49,8 +53,20 @@ def main():
     # Calling the API with the prompt
     generated_output = generate_output(ideal_prompt)
 
-    # Printing the output
-    print(generated_output)
+    questions = []
+    answers = []
+
+    # Parsing the output and separating the questions and answers
+    for line in generated_output.split("\n"):
+        if ("Q:") in line:
+            questions.append(line)
+        elif ("A:") in line:
+            answers.append(line)
+
+    # Printing the questions and answers
+    for i in range(len(questions)):
+        print(questions[i])
+        print(answers[i])
 
 
 if __name__ == "__main__":
