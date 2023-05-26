@@ -1,2 +1,2 @@
 # Study-AutoMate
-An Open-AI powered flash-card generator for study purposes.
+An Open-AI powered flashcard generator for study purposes.
