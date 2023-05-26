@@ -7,10 +7,12 @@ openai.api_key = ""
 
 # PDF reader
 def read_pdf(file):
+    pages = []
     reader = PdfReader(file)
-    # Testing for one page
-    page = reader.pages[0]
-    return page.extract_text()
+    # Getting all pages
+    for page in reader.pages:
+        pages.append(page.extract_text())
+    return "".join(pages)
 
 
 # Output generator function
