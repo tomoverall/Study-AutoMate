@@ -1,9 +1,17 @@
 import openai
+import csv
 from PyPDF2 import PdfReader
 
 # OpenAI API Key
 openai.api_key = ""
 
+def export_to_csv(question, answer):
+    fieldnames = ["Question", "Answer"]
+
+    with open("flashcards.csv", "a", newline="") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writerow({"Question": question, "Answer": answer})
 
 # PDF reader
 def read_pdf(file):
@@ -67,6 +75,8 @@ def main():
     for i in range(len(questions)):
         print(questions[i])
         print(answers[i])
+    
+    export_to_csv("What is the capital of France?", "Paris")
 
 
 if __name__ == "__main__":
