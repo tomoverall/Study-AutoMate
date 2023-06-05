@@ -5,13 +5,15 @@ from PyPDF2 import PdfReader
 # OpenAI API Key
 openai.api_key = ""
 
+# CSV Exporter
 def export_to_csv(question, answer):
     fieldnames = ["Question", "Answer"]
 
     with open("flashcards.csv", "a", newline="") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-        writer.writerow({"Question": question, "Answer": answer})
+        for question, answer in zip(question, answer):
+            writer.writerow({"Question": question, "Answer": answer})
 
 # PDF reader
 def read_pdf(file):
@@ -76,7 +78,7 @@ def main():
         print(questions[i])
         print(answers[i])
     
-    export_to_csv("What is the capital of France?", "Paris")
+    export_to_csv(questions, answers)
 
 
 if __name__ == "__main__":
