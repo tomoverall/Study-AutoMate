@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study AutoMate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Study AutoMate</h1>
+    <form action="/process" method="POST" enctype="multipart/form-data">
+        <div class="file-input">
+            <label for="file-upload" class="custom-file-upload">
+                Choose File
+                <input type="file" id="file-upload" name="file" accept=".pdf">
+            </label>
+        </div>
+        <input type="submit" id="generate-btn" value="Generate Flashcards" disabled>
+    </form>
+    <a href="{{ url_for('welcome') }}" class="back-button">Back</a>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
