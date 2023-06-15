@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study AutoMate - Welcome</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Welcome to Study AutoMate - Created with the OpenAI API</h1>
+    <p>Study AutoMate is a web app that allows you to generate flashcards from your notes.</p>
+    <p>Created by Tom Overall (2023).</p>
+    <p>It's as simple as:</p>
+    <ul>
+        <li>Step 1: Select a page of notes you would like to study (PDF).</li>
+        <li>Step 2: Press 'Generate Flashcards'.</li>
+        <li>Step 3: Upload the CSV file to a flashcard app of your choice to start studying.</li>
+    </ul>
+    <form action="{{ url_for('index') }}">
+        <input type="submit" value="Start">
+    </form>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
