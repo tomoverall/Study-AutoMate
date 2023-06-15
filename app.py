@@ -12,7 +12,7 @@ from io import BytesIO
 
 
 # OpenAI API Key
-openai.api_key = "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"
+openai.api_key = ""
 
 # Flask app
 app = Flask(__name__, static_folder="static")
